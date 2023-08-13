@@ -1,5 +1,5 @@
 # NLM-Scrubber-encoder
-Helper tool for encoding text files so that the files are NLM-scrubber ready. As of scrubber.19.0411W, only ASCII-encoded files can be taken, but plans are being put in place so that UTF-8 can also be taken as input.
+Helper tool for encoding text files so that the files are NLM-scrubber ready. As of scrubber.19.0411W, only ASCII-encoded files can be taken, but plans are being put in place so that UTF-8 can also be taken as input for teh scrubber.
 
 # Instructions:
 1. Select a directory/folder with all files the user wants encoded. (has to be .txt or .HL7)
@@ -7,7 +7,8 @@ Helper tool for encoding text files so that the files are NLM-scrubber ready. As
 3. Choose the encoding type, be it ASCII or UTF-8
 4. Choose the file extension, be it .txt, .HL7, or both.
 5. Execute program and wait for popup of output folder.
-6. Profit!
+6. Use this output folder as the input directory of the NLM-scrubber.
+7. Profit!
 
 # Program Statistics:
 1. A list of the 90 encodings that this program can handle is found here in the documentation: https://charset-normalizer.readthedocs.io/en/latest/user/support.html#supported-encoding.
