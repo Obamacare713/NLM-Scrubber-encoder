@@ -8,12 +8,15 @@ Helper tool for encoding text files so that the files are NLM-scrubber ready. As
 4. Choose the file extension, be it .txt, .HL7, or both.
 5. Execute program and wait for popup of output folder.
 6. Use this output folder as the input directory of the NLM-scrubber.
-7. Profit!
 
 # Program Statistics:
 1. A list of the 90 encodings that this program can handle is found here in the documentation: https://charset-normalizer.readthedocs.io/en/latest/user/support.html#supported-encoding.
 2. From tests I have run, carriage returns and newlines are preserved for both new ASCII or UTF-8 encoded files.
-3. The conversion speed of a single text file of size 2730 kilobytes(2.7 megabytes) took 0.030041199999686796 seconds(0.03 seconds), according to a timer module I used.
-4. Additional packages will need to be installed as not all packages used are in the standard Python library; all packages necessary for the program to run are found in lines 1-7.
-
-
+3. The conversion speed of a single text file of approximate size 5.117 megabytes took ~497 milliseconds.
+4. Additional python packages necessary for running of encoder is found in lines 1-7
+5. Greek characters like α are converted into alpha, and Α(capital alpha), is converted into Alpha, so there is case sensitivity.
+6. Words(elements of a list created via .split() of the whole file's text content) are run through unidecode if setting is ASCII encoding.
+   - This means that words not able to be converted into ASCII form will be turned into the string "[UNRECOGNIZED_WORD]"
+   - Languages that do not use spaces, for example Chinese, could potentially have problems with whole sentences being converted to the string "[UNRECOGNIZED_WORD]".
+7. Text run to convert into UTF-8 will have all non-UTF-8 characters deleted.
+8. There is a executable version of the python file for ease of access, understandably be wary as executable files can contain malicious code.
