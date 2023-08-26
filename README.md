@@ -20,3 +20,4 @@ Helper tool for encoding text files so that the files are NLM-scrubber ready. As
    - Languages that do not use spaces, for example Chinese, could potentially have problems with whole sentences being converted to the string "[UNRECOGNIZED_WORD]".
 7. Text run to convert into UTF-8 will have all non-UTF-8 characters deleted.
 8. There is a executable version of the python file for ease of access, understandably be wary as executable files can contain malicious code.
+   - Preferably when possible, use encoder.py
