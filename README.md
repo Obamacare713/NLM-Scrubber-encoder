@@ -18,6 +18,4 @@ Helper tool for encoding text files so that the files are NLM-scrubber ready. As
 6. Words(elements of a list created via .split() of the whole file's text content) are run through unidecode if setting is ASCII encoding.
    - This means that words not able to be converted into ASCII form will be turned into the string "[UNRECOGNIZED_WORD]"
    - Languages that do not use spaces, for example Chinese, could potentially have problems with whole sentences being converted to the string "[UNRECOGNIZED_WORD]".
-7. Text run to convert into UTF-8 will have all non-UTF-8 characters deleted.
-8. There is a executable version of the python file for ease of access, understandably be wary as executable files can contain malicious code.
-   - Preferably when possible, use encoder.py
+7. Text converted into UTF-8 will have all non-UTF-8 characters deleted.
