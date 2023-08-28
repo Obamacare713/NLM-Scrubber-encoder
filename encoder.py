@@ -60,16 +60,11 @@ def greek(text):
     }
     temp_keys = list(greek_alphabet.keys())
 
+    # Converts all the greek characters in the text
     for i in range(len(greek_alphabet)):
         text = text.replace(temp_keys[i], greek_alphabet[temp_keys[i]])
 
     return text
-
-"""
-Additional features that can be added:
-A function to automatically time how long the program takes
-Deciding what to do with undecodeable characters like unicode when encoded into ASCII
-"""
 
 # Tkinter window setup
 root = tk.Tk()
@@ -135,21 +130,23 @@ def helper_encoding(path, file, out_path, new_folder_name, new_encoding):
     with open(f"{path}/{file}", 'r', encoding=old_encoding) as f:
         content = f.read()
 
-    # New file is created with chosen encoding, either ASCII or UTF-8
+    # If the new encoding chosen is UTF-8, all non-UTF-8 characters are erased
     if new_encoding == "utf-8":
         with open(f"{out_path}/{new_folder_name}/{file}", 'w', encoding=new_encoding) as f:
             f.write((content.encode(new_encoding, 'ignore').decode(new_encoding, 'ignore')))
     
-    # Unidecode for changing Unicode to ASCII versions(including custom handling of Greek) 
+    # If the new encoding chosen is ASCII, unidecode() tries its best to convert words with non-ASCII into ASCII form, if it cannot "[UNRECOGNIZED_WORD]" is returned
     elif new_encoding == "ascii":
         with open(f"{out_path}/{new_folder_name}/{file}", 'w', encoding=new_encoding) as f:
-            content = greek(content).split() # Very crude way of differentiating what a "word" is, should work for most Western languages. Words separated by space assumed
+            
+            # Very crude way of differentiating what a "word" is, should work for most Western languages. Words separated by space assumed
+            content = greek(content).split()
             for i in range(len(content)):
                 try:
                     content[i] = unidecode(content[i], errors="strict")
                 except:
-                    content[i] = "UNRECOGNIZED_WORD"
-
+                    content[i] = "[UNRECOGNIZED_WORD]"
+            # Joins together all the words into one text again, and writes it to the new file
             f.write(" ".join(content))
 
 # Change encoding
@@ -237,7 +234,6 @@ def error_check(var_status):
 
         # Opens up resulting path
         os.startfile(ending_path)
-
 
 # Execute the program with all given parameters; this is mostly styling and placement of button
 execute_text = tk.StringVar()
